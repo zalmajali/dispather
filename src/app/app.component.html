@@ -1,0 +1,58 @@
+<ion-app>
+    <ion-split-pane contentId="main-content">
+        <ion-menu contentId="main-content" menuId="outMenue" type="overlay" side="start"  >
+            <ion-header  class="menu-content normal">
+            	<ion-title>Menu</ion-title>
+            </ion-header>
+            <ion-content class="menuContent-sidebar">
+                <ion-list>
+                    <ion-menu-toggle auto-hide="false" *ngFor="let pages of appWithoutLogInPage; let i = index">
+                        <ion-item (click)="functionGoPage(pages.url)">
+                    		<ion-icon class="normal" name="{{pages.icon}}"></ion-icon>
+                        	<ion-label>{{ pages.title }}</ion-label>
+                        </ion-item>
+                    </ion-menu-toggle>
+                </ion-list>
+            </ion-content>
+        </ion-menu>
+        <ion-menu contentId="main-content" menuId="inMenue" type="overlay" side="start"  >
+            <ion-header class="menu-content normal">
+            	<ion-title>Menu</ion-title>
+            </ion-header>
+            <ion-content class="menuContent-sidebar">
+             <ion-list>
+                    <ion-menu-toggle auto-hide="false" *ngFor="let pages of appWithLoginPage; let i = index">
+                        <ion-item (click)="functionGoPage(pages.url)" *ngIf=" i!=4 ">
+                    		<ion-icon class="normal" name="{{pages.icon}}"></ion-icon>
+                        	<ion-label>{{ pages.title }}</ion-label>
+                        </ion-item>
+                         <ion-item (click)="signOut()" *ngIf=" i==4 ">
+                    		<ion-icon class="normal" name="{{pages.icon}}"></ion-icon>
+                        	<ion-label>{{ pages.title }}</ion-label>
+                        </ion-item>
+                    </ion-menu-toggle>
+                </ion-list>
+            </ion-content>
+        </ion-menu>
+         <ion-menu contentId="main-content" menuId="inMenueDark" type="overlay" side="start"  >
+            <ion-header class="menu-content dark">
+            	<ion-title>Menu</ion-title>
+            </ion-header>
+            <ion-content class="menuContent-sidebar">
+             <ion-list>
+                    <ion-menu-toggle auto-hide="false" *ngFor="let pages of appWithLoginPage; let i = index">
+                        <ion-item (click)="functionGoPage(pages.url)" *ngIf=" i!=4 ">
+                    		<ion-icon class="dark" name="{{pages.icon}}"></ion-icon>
+                        	<ion-label>{{ pages.title }}</ion-label>
+                        </ion-item>
+                         <ion-item (click)="signOut()" *ngIf=" i==4 ">
+                    		<ion-icon class="dark" name="{{pages.icon}}"></ion-icon>
+                        	<ion-label>{{ pages.title }}</ion-label>
+                        </ion-item>
+                    </ion-menu-toggle>
+                </ion-list>
+            </ion-content>
+        </ion-menu>
+        <ion-router-outlet id="main-content"></ion-router-outlet>
+    </ion-split-pane>
+</ion-app>

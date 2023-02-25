@@ -1,0 +1,40 @@
+<ion-header class="{{darkNormalCalss}}" [translucent]="true">
+    <div class="menu-header" id="main-content">
+        <ion-buttons slot="start" (click)="closeModel()">
+      		<ion-button class="menueButtonClass"><ion-icon name="close-outline" class="iconMenu"></ion-icon></ion-button>
+        </ion-buttons>
+    </div>
+    <div class="logo">
+        <ion-title>
+            {{ticketfinished}}
+        </ion-title>
+    </div>
+</ion-header>
+<ion-content class="{{darkNormalCalss}}">
+    <div class="signatureCanvas" id="signatureCanvas">
+    	<canvas #canvas (touchstart)="startDrawing($event)" (touchmove)="moved($event)"></canvas>
+    	<div class="signatureBtn">
+            <ion-button disabled="{{showCanvasSignature}}" size="large" class="{{darkNormalCalss}}" (click)="clearPad()">{{clear}}</ion-button>
+            <ion-button disabled="{{showCanvasSignature}}" size="large" class="{{darkNormalCalss}}" color="secondary" (click)="savePad()">{{save}}</ion-button>
+        </div>
+    	<div class="imageDiv">
+        	<div class="imageSubDiv"><img *ngIf="signatureImg" src='{{signatureImg}}'/></div>
+        </div>
+    </div>
+    <div class="checkbox-NA-PLOS">
+        <ion-list>
+            <ion-item>
+                <ion-checkbox class="{{darkNormalCalss}}" slot="start" (ionChange)="functionNorATicket($event)"></ion-checkbox>
+                <ion-label class="{{darkNormalCalss}}">N/A</ion-label>
+            </ion-item>
+             <ion-item>
+                <ion-checkbox class="{{darkNormalCalss}}" slot="start" (ionChange)="functionPlosTicket($event)"></ion-checkbox>
+                <ion-label class="{{darkNormalCalss}}">PLOS</ion-label>
+            </ion-item>
+
+        </ion-list>
+    </div>
+    <div class="signature-btn">
+        <ion-button color="danger" class="{{darkNormalCalss}}" expand="block" (click)="functionComplete()">{{save}}</ion-button>
+    </div>
+</ion-content>
